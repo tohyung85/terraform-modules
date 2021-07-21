@@ -44,7 +44,7 @@ resource "aws_lb_listener_rule" "asg" {
 }
 
 resource "aws_lb_target_group" "asg" {
-  name     = "${var.cluster_name}-asg"
+  name     = "hello-world-${var.environment}"
   port     = var.server_port
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.default.id
