@@ -77,7 +77,7 @@ module "asg" {
   target_group_arns = [aws_lb_target_group.asg.arn]
   health_check_type = "ELB"
 
-  alb_security_group_ids = module.alb.alb_security_group_id
+  alb_security_group_id = module.alb.alb_security_group_id
 
   custom_tags = var.custom_tags
 }

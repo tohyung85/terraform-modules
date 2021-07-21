@@ -1,13 +1,17 @@
 terraform {
   # Require Terraform at exactly version 0.12.0 
   required_version = ">= 1.0"
+
+  required_providers {
+    aws = {
+      # Allow any 3.x version of the AWS provider 
+      version = "~> 3.0"
+    }
+  }
 }
 
 provider "aws" {
   region = "us-east-2"
-
-  # Allow any 3.x version of the AWS provider 
-  version = "~> 3.0"
 }
 
 module "alb" {
