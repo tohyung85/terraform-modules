@@ -61,7 +61,8 @@ resource "aws_lb_target_group" "asg" {
 }
 
 module "asg" {
-  source = "../../cluster/asg-rolling-deploy"
+  # source = "../../cluster/asg-rolling-deploy"
+  source = "github.com/tohyung85/terraform-modules//cluster/asg-rolling-deploy?ref=v0.0.3"
 
   cluster_name  = "hello-world-${var.environment}"
   ami           = var.ami
@@ -82,8 +83,8 @@ module "asg" {
 }
 
 module "alb" {
-  source = "../../networking/alb"
-
+  # source = "../../networking/alb"
+  source     = "github.com/tohyung85/terraform-modules//networking/alb?ref=v0.0.3"
   alb_name   = "hello-world-${var.environment}"
   subnet_ids = data.aws_subnet_ids.default.ids
 }
