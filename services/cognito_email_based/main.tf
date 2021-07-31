@@ -38,7 +38,3 @@ resource "aws_cognito_user_pool" "custom" {
     value = "${var.name}-cognito-user-pool"
   }
 }
-
-resource "aws_ses_email_identity" "custom" {
-  email = var.sending_email_address
-}
