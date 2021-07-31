@@ -15,12 +15,7 @@ variable "verification_email_subject" {
   default     = "Almost there! Verify your email"
 }
 
-variable "app_email" {
+variable "ses_email_arn" {
   type        = string
-  description = "From email address to be reflected in emails sent by cognito"
-}
-
-variable "sending_email_address" {
-  type        = string
-  description = "Email account for sending of emails by Cognito. This will be verified in SES."
+  description = "Email account for sending of emails by Cognito. This email must be created in SES and verified."
 }

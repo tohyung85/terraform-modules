@@ -30,8 +30,7 @@ resource "aws_cognito_user_pool" "custom" {
 
   email_configuration {
     email_sending_account = "DEVELOPER"
-    from_email_address    = var.app_email
-    source_arn            = aws_ses_email_identity.custom.arn
+    source_arn            = var.ses_email_arn
   }
 
   tags = {
