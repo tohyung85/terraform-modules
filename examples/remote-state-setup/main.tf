@@ -1,14 +1,23 @@
+terraform {
+  required_version = "~>1.0"
+
+  required_providers {
+    aws = {
+      version = "~>3.0"
+    }
+  }
+  # Partial configuration . The other settings (e.g bucket, region) will be
+# passed in from a file via --backend-config arguments to 'terraform init'
+  backend "s3" {
+    key = "workspaces-example/terraform.tfstate"    
+    # role_arn = "assumed_role"
+  }
+}
+
 provider "aws" {
   region = "us-east-1"
 }
 
-# Partial configuration . The other settings (e.g bucket, region) will be
-# passed in from a file via --backend-config arguments to 'terraform init'
-terraform {
-  backend "s3" {
-    key = "workspaces-example/terraform.tfstate"    
-  }
-}
 
 resource "aws_s3_bucket" "terraformstate" {
   bucket = "tohyung-learning-terraform"
