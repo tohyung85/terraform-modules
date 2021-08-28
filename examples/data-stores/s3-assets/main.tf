@@ -27,15 +27,7 @@ output "bucket_arn" {
   value       = module.s3-assets.s3_arn
   description = "S3 ARN"
 }
-# {
-#   "Sid": "CloudfrontPrivateContent",
-#   "Effect": "Allow",
-#   "Principal": {
-#     "AWS": "AIDAIUJMTSAYIF3DHT654"
-#   },
-#   "Action": "s3:GetObject",
-#   "Resource": "arn:aws:s3:::tuesdayten-assets/*"
-# }
+
 output "distribution_domain_name" {
   value       = module.s3-assets.cloudfront_domain_name
   description = "Cloudfront domain name"
