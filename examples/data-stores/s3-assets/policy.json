@@ -1,0 +1,18 @@
+{
+  "Version": "2012-10-17",
+  "Id": "AssetsBucketPolicies",
+  "Statement": [
+    {
+      "Sid": "APIServerReadWrite",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::725110312609:user/api-backend"
+      },
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::my-s3-assets-bucket-test",
+        "arn:aws:s3:::my-s3-assets-bucket-test/*"
+      ]
+    }
+  ]
+}
