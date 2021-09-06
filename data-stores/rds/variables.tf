@@ -53,4 +53,8 @@ variable "db_username" {
   default     = "iamadmin"
 }
 
-
+variable "db_security_groups" {
+  description = "Security groups to assign to DB"
+  type        = list(string)
+  default     = []
+}
