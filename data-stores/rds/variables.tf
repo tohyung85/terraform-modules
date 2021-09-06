@@ -34,3 +34,23 @@ variable "subnet_ids" {
   type        = list(string)
   default     = []
 }
+
+variable "db_engine" {
+  description = "DB Engine. MySQL, Postgres etc."
+  type        = string
+  default     = "postgres"
+}
+
+variable "engine_version" {
+  description = "Engine Version"
+  type        = string
+  default     = ""
+}
+
+variable "db_username" {
+  description = "User name of admin"
+  type        = string
+  default     = "iamadmin"
+}
+
+

@@ -12,14 +12,16 @@ provider "aws" {
   region = "us-east-1"
 }
 
-module "mysql" {
-  source = "../../../data-stores/mysql"
+module "postgres" {
+  source = "../../../data-stores/rds"
 
   db_instance_prefix   = "example"
   db_instance_type     = "db.t2.micro"
   db_name              = "test_db"
   db_allocated_storage = 10
   db_password          = "changeMe"
+  engine_version       = "10.14"
+  db_engine            = "postgres"
 
   publicly_accessible = true
   subnet_ids = [
