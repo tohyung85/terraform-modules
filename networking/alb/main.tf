@@ -7,7 +7,11 @@ locals {
   all_ips      = ["0.0.0.0/0"]
 }
 
-resource "aws_lb" "example" {
+data "aws_subnet" "provided_subnet" {
+  id = var.subnet_ids[0]
+}
+
+resource "aws_lb" "alb" {
   name               = var.alb_name
   load_balancer_type = "application"
   subnets            = var.subnet_ids
@@ -15,7 +19,7 @@ resource "aws_lb" "example" {
 }
 
 resource "aws_lb_listener" "http" {
-  load_balancer_arn = aws_lb.example.arn
+  load_balancer_arn = aws_lb.alb.arn
   port              = local.http_port
   protocol          = "HTTP"
 
@@ -31,7 +35,8 @@ resource "aws_lb_listener" "http" {
 }
 
 resource "aws_security_group" "alb" {
-  name = var.alb_name
+  name   = var.alb_name
+  vpc_id = data.aws_subnet.provided_subnet.vpc_id
 }
 
 resource "aws_security_group_rule" "alb_allow_all_inbound" {
