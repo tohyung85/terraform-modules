@@ -29,6 +29,14 @@ data "aws_security_group" "vpc_sg" {
   name   = "default"
 }
 
+data "template_file" "user_data" {
+  template = file("./user-data.sh")
+
+  vars = {
+    cluster_name = var.name
+  }
+}
+
 module "terraform_asg" {
   source = "terraform-aws-modules/autoscaling/aws"
   # source  = "HDE/autoscaling/aws"
@@ -45,6 +53,7 @@ module "terraform_asg" {
   instance_type             = var.instance_type
   security_groups           = [data.aws_security_group.vpc_sg.id]
   iam_instance_profile_name = module.ecs_iam_profile.iam_instance_profile_id
+  user_data                 = data.template_file.user_data.rendered
 
   # Auto scaling group
   vpc_zone_identifier       = var.asg_subnets
