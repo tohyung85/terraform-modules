@@ -30,7 +30,7 @@ data "aws_security_group" "vpc_sg" {
 }
 
 data "template_file" "user_data" {
-  template = file("./user-data.sh")
+  template = file("${path.module}/user-data.sh")
 
   vars = {
     cluster_name = var.name
