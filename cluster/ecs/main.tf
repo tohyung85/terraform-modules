@@ -1,7 +1,7 @@
 module "asg" {
   source = "./modules/asg"
 
-  name = "${var.name}-asg"
+  name = var.name
 
   asg_subnets = var.subnets
 
