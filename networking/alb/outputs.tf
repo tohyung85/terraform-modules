@@ -12,3 +12,8 @@ output "alb_security_group_id" {
   value       = aws_security_group.alb.id
   description = "The ALB Security Group ID"
 }
+
+output "alb_arn" {
+  value       = aws_lb.alb.arn
+  description = "ALB ARN"
+}
